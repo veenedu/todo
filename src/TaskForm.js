@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 const styles= {
   form:{
     display:'flex',
-    border:'1px solid #eee'
+    border:'1px solid #eee',
+    flex:1
   },
   left:{
     flex:1,
