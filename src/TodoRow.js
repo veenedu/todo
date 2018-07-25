@@ -1,0 +1,33 @@
+import React, { Component } from 'react';
+
+import Checked from 'react-icons/lib/md/check'
+import Unchecked from 'react-icons/lib/io/android-checkbox-outline-blank'
+
+const styles= {
+  container:{
+    display:'flex',
+    backgroundColor:'#f4f4f4',
+    borderBottom:'1px solid #ddd'
+
+  },
+  left:{
+    display:'flex',
+    padding:12
+  },
+  right:{
+    flex:1,
+    display:'flex',
+    alignItems:'center',
+    paddingLeft:16
+  }
+}
+
+export function TodoRow(props){
+  let {task, onToggle}= props;
+  return <div style={styles.container}>
+        <div  style={styles.left} onClick={()=>{onToggle(task)}}>
+          {task.completed? <Checked /> : <Unchecked />}
+        </div>
+        <div  style={styles.right}>{task.text}</div>
+  </div>
+}
