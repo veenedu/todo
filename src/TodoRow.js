@@ -28,6 +28,6 @@ export default function TodoRow(props){
         <div  style={styles.left} onClick={()=>{onToggle(task)}}>
           {task.completed? <Checked /> : <Unchecked />}
         </div>
-        <div  style={styles.right}>{task.text}</div>
+        <div  style={{...styles.right, textDecoration: task.completed && 'line-through' }}>{task.text}</div>
   </div>
 }
