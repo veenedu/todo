@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import Layout from './Layout'
+import {Provider} from 'react-redux'
+import {store} from './AppState'
+
 
 class App extends Component {
   render() {
     return (
-      <div>
-        Hello. Todo App.
-      </div>
+      <Provider store={store}>
+          <Layout />
+      </Provider>
     );
   }
 }
