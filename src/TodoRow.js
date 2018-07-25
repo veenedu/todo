@@ -7,8 +7,8 @@ const styles= {
   container:{
     display:'flex',
     backgroundColor:'#f4f4f4',
-    borderBottom:'1px solid #ddd'
-
+    borderBottom:'1px solid #ddd',
+    flex:1
   },
   left:{
     display:'flex',
@@ -22,7 +22,7 @@ const styles= {
   }
 }
 
-export function TodoRow(props){
+export default function TodoRow(props){
   let {task, onToggle}= props;
   return <div style={styles.container}>
         <div  style={styles.left} onClick={()=>{onToggle(task)}}>
