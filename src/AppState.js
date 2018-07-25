@@ -8,14 +8,14 @@ const ADD_TASK      = 'ADD_TASK'
 const TOGGLE_TASKS  = 'TOGGLE_TASKS';
 
 
-function addTask(taskText){
+export function addTask(taskText){
   return {
     type:ADD_TASK,
     payload:taskText
   }
 }
 
-function toggleTask(task){
+export function toggleTask(task){
   return {
     type:TOGGLE_TASKS,
     payload:task
@@ -52,6 +52,7 @@ function tasksReducer(state=defaultTasks, action){
               }
               return task;
           })
+          return {...state,data:tasks}
       }
       return state;
 }
@@ -64,10 +65,13 @@ let rootReducer ={
 
 let store = createStore(combineReducers(rootReducer));
 
-store.subscribe(function(){
-  console.log(store.getState().tasks);
-})
+export {store};
 
+
+
+// store.subscribe(function(){
+//   console.log(store.getState().tasks);
+// })
 
 // store.dispatch(addTask('Task 1'))
 // store.dispatch(addTask('Task 2'))
