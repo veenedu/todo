@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Layout from './Layout'
 import {Provider} from 'react-redux'
-import {store} from './AppState'
+import {store,getTasks} from './AppState'
 
 
 class App extends Component {
@@ -13,5 +13,8 @@ class App extends Component {
     );
   }
 }
+
+store.dispatch(getTasks())
+
 
 export default App;
