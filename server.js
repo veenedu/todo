@@ -5,6 +5,15 @@ const bodyParser = require('body-parser')
 
 app.use(bodyParser())
 
+let _count=1;
+function taskGenerator(taskText){
+  return {
+    id: _count++,
+    text:taskText,
+    completed:false
+  }
+}
+
 var tasks = [];
 app.get('/getTasks',function(req,res){
     res.json({success:true,data:tasks})
@@ -12,7 +21,8 @@ app.get('/getTasks',function(req,res){
 
 
 app.post('/addTask',function(req,res){
-  let task = req.body.taskText;
+  let taskText = req.body.taskText;
+  let task=  taskGenerator(taskText);
   
   tasks.push(task);
   res.json({success:true})
