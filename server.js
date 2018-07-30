@@ -1,6 +1,9 @@
 const app = require('express')();
 const PORT = 8081
+const bodyParser = require('body-parser')
 
+
+app.use(bodyParser())
 
 var tasks = [];
 app.get('/getTasks',function(req,res){
@@ -10,6 +13,7 @@ app.get('/getTasks',function(req,res){
 
 app.post('/addTask',function(req,res){
   let task = req.body.taskText;
+  
   tasks.push(task);
   res.json({success:true})
 });
