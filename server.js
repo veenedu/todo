@@ -1,6 +1,19 @@
 const app = require('express')();
 const PORT = 8081
+const bodyParser = require('body-parser')
 
+//Todo: spend some more time on middilewares
+
+app.use(bodyParser())
+
+let _count=1;
+function taskGenerator(taskText){
+  return {
+    id: _count++,
+    text:taskText,
+    completed:false
+  }
+}
 
 var tasks = [];
 app.get('/getTasks',function(req,res){
@@ -9,7 +22,9 @@ app.get('/getTasks',function(req,res){
 
 
 app.post('/addTask',function(req,res){
-  let task = req.body.taskText;
+  let taskText = req.body.taskText;
+  let task=  taskGenerator(taskText);
+  
   tasks.push(task);
   res.json({success:true})
 });
