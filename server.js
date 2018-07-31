@@ -2,6 +2,7 @@ const app = require('express')();
 const PORT = 8081
 const bodyParser = require('body-parser')
 
+//Todo: spend some more time on middilewares
 
 app.use(bodyParser())
 
