@@ -3,6 +3,7 @@ import TaskForm from './TaskForm'
 import TodoRow from './TodoRow'
 import {connect} from 'react-redux'
 import {addTask,toggleTask} from './AppState'
+import Loading from './Loading'
 
 const styles= {
   container:{
@@ -28,6 +29,9 @@ class Layout extends Component {
       <div style={styles.container}>
             <div style={styles.formContainer}>
                 <TaskForm addTask={addTask} />
+            </div>
+            <div>
+              <Loading loading={tasks.loading} />
             </div>
             <div style={styles.listContainer}>
                 {tasks.data.map((task,i)=>{
