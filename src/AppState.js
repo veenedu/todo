@@ -33,10 +33,14 @@ export function getTasks(){
   return {type:GET_TASKS_START}
 }
 
+export function getTasksSuccess(tasks){
+  return {type:GET_TASKS_SUCCESS,payload: tasks}
+}
+
 
 //Reducers
 let defaultTasks= {
-  state:'loaded', //loading, loaded
+  loading:false, 
   data:[]
 }
 let _count=1;
@@ -62,6 +66,16 @@ function tasksReducer(state=defaultTasks, action){
           })
           return {...state,data:tasks}
       }
+
+      if(action.type === GET_TASKS_START){
+        return {...state,loading:true}
+      }
+
+
+      if(action.type === GET_TASKS_SUCCESS){
+        return {...state,data:state.data.concat(action.payload), loading:false}
+      }
+
       return state;
 }
 let rootReducer ={
@@ -73,8 +87,10 @@ let rootReducer ={
 
 //Saga codes
 function* sGetTasks(action){
+  yield delay(4000)
   let response = yield call(axios,{url:`/getTasks`})
   let tasks = response.data;
+  yield put(getTasksSuccess(tasks.data));
 }
 
 function* rootSaga(){
