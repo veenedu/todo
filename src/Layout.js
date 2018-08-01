@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TaskForm from './TaskForm'
 import TodoRow from './TodoRow'
 import {connect} from 'react-redux'
-import {addTask,toggleTask} from './AppState'
+import {addTaskStart,toggleTaskStart} from './AppState'
 import Loading from './Loading'
 
 const styles= {
@@ -49,4 +49,4 @@ const mapStateToProps = function(state){
   }
 }
 
-export default connect(mapStateToProps,{addTask,toggleTask})(Layout);
+export default connect(mapStateToProps,{addTask:addTaskStart,toggleTask:toggleTaskStart})(Layout);
