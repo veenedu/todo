@@ -7,7 +7,7 @@ class Loading extends Component {
         }
         return (
             <div>
-                Loading....
+                {this.props.loading}
             </div>
         );
     }
