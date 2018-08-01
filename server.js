@@ -26,21 +26,24 @@ app.post('/addTask',function(req,res){
   let task=  taskGenerator(taskText);
   
   tasks.push(task);
-  res.json({success:true})
+  res.json({success:true,task:task})
 });
 
 app.post('/toggleTask',function(req,res){
-  let taskId = req.body.taskId;
-  let success=false;
-  tasks= tasks.map((task)=>{
-    if(task.id == taskId){
-      task.completed = !task.completed;
-      success = true
+  setTimeout(function(){
+    let taskId = req.body.taskId;
+    let success=false;
+    if(taskId!=5){
+      tasks= tasks.map((task)=>{
+        if(task.id == taskId){
+          task.completed = !task.completed;
+          success = true
+        }
+        return task
+      })
     }
-    return task
-  })
-
-  res.json({success})
+    res.json({success})
+  },4000)
 });
 
 app.listen(PORT,function(){
