@@ -89,8 +89,15 @@ function tasksReducer(state=defaultTasks, action){
 
       return state;
 }
+
+
+function userReducer(){
+  return null;
+}
+
 let rootReducer ={
-  tasks: tasksReducer
+  tasks: tasksReducer,
+  user:userReducer
 }
 
 
